@@ -9,3 +9,10 @@ package 'httpd'
 service 'httpd' do
   action :start
 end
+
+package 'mysql-server'
+
+service 'mysqld' do
+  action :start
+end
+
