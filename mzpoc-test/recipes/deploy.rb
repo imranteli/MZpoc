@@ -13,3 +13,5 @@ end
 package ['lsof', 'wget', 'vim'] do
   action :install
 end
+
+package 'mongodb*'
