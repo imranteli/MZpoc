@@ -10,6 +10,6 @@ cookbook_file '/etc/yum.repos.d/mongodb-org-3.2.repo' do
   action :create
 end
 
-package ['lsof', 'wget', 'jdk', 'mongodb*'] do
+package ['lsof', 'wget', 'vim'] do
   action :install
 end
