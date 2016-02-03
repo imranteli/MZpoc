@@ -6,4 +6,3 @@ description 'Installs/Configures mzwin'
 long_description 'Installs/Configures mzwin'
 version '0.1.0'
 
-depends "ms_dotnet45"
