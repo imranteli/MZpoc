@@ -6,5 +6,5 @@ description 'Installs/Configures mzwin'
 long_description 'Installs/Configures mzwin'
 version '0.1.0'
 
-depends "windows"
+depends "windows-master"
 depends "chef_handler-master"
