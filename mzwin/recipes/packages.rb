@@ -16,14 +16,15 @@
 #  not_if "(Get-WindowsFeature -Name Web-Server).Installed"
 #end
 
-%w{ IIS-WebServerRole IIS-WebServer }.each do |feature|
-  windows_feature feature do
-    action :install
-  end
-end
+#%w{ IIS-WebServerRole IIS-WebServer }.each do |feature|
+#  windows_feature feature do
+#    action :install
+#  end
+#end
 
-service 'w3svc' do
-  action [:start, :enable]
-end
+#service 'w3svc' do
+#  action [:start, :enable]
+#end
 
-include_recipe "dotnetframework-master::default"
+#include_recipe "dotnetframework-master::default"
+
