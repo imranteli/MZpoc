@@ -28,3 +28,7 @@
 
 #include_recipe "dotnetframework-master::default"
 
+git_client 'default' do
+  action :install
+end
+

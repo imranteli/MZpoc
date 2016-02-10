@@ -9,3 +9,4 @@ version '0.1.0'
 depends "windows"
 depends "chef_handler"
 depends "iis"
+depends "git"
