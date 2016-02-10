@@ -15,7 +15,10 @@ git 'D:/mzzipcode/' do
   action :sync
 end
 
-windows_zipfile 'D:/MozartV2_POCi/' do
-  source 'D:/mzzipcode/artifacts/file21.zip'
+aFile = File.new("D:/mzzipcode/artifacts/filename.txt", "r")
+zipname = aFile.read
+
+windows_zipfile 'D:/MozartV2_POC/' do
+  source "D:/mzzipcode/artifacts/#{zipname}"
   action :unzip
 end
