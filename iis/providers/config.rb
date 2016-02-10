@@ -27,15 +27,15 @@ include Opscode::IIS::Processors
 
 # :config deprecated, use :set instead
 action :config do
-  new_resource.updated_by_last_action(true) if config
+  config
 end
 
 action :set do
-  new_resource.updated_by_last_action(true) if config
+  config
 end
 
 action :clear do
-  new_resource.updated_by_last_action(true) if config(:clear)
+  config(:clear)
 end
 
 def config(action = :set)

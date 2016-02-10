@@ -20,11 +20,11 @@
 
 include_recipe 'iis'
 
-feature = if Opscode::IIS::Helper.older_than_windows2008r2?
-            'Web-Dyn-Compression'
-          else
-            'IIS-HttpCompressionDynamic'
-          end
+if Opscode::IIS::Helper.older_than_windows2008r2?
+  feature = 'Web-Dyn-Compression'
+else
+  feature = 'IIS-HttpCompressionDynamic'
+end
 
 windows_feature feature do
   action :install

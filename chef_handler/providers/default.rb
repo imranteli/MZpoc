@@ -29,12 +29,13 @@ end
 action :enable do
   class_name = new_resource.class_name
   new_resource.supports.each do |type, enable|
-    next unless enable
-    converge_by("disable #{class_name} as a #{type} handler") do
-      unregister_handler(type, class_name)
+    if enable
+      converge_by("disable #{class_name} as a #{type} handler") do
+        unregister_handler(type, class_name)
+      end
     end
   end
-
+  
   handler = nil
   converge_by("load #{class_name} from #{new_resource.source}") do
     require new_resource.source
@@ -43,9 +44,10 @@ action :enable do
   end
 
   new_resource.supports.each do |type, enable|
-    next unless enable
-    converge_by("enable #{new_resource} as a #{type} handler") do
-      register_handler(type, handler)
+    if enable
+      converge_by("enable #{new_resource} as a #{type} handler") do
+        register_handler(type, handler)
+      end
     end
   end
 end
@@ -74,3 +76,4 @@ def collect_args(resource_args = [])
     [resource_args]
   end
 end
+
