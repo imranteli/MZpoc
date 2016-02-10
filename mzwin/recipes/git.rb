@@ -16,7 +16,7 @@ git 'D:/mzzipcode/' do
 end
 
 aFile = File.new("D:/mzzipcode/artifacts/filename.txt", "r")
-zipname = aFile.read
+zipname = aFile.read.strip
 
 windows_zipfile 'D:/MozartV2_POC/' do
   source "D:/mzzipcode/artifacts/#{zipname}"
