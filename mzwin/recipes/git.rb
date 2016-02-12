@@ -35,7 +35,7 @@ end
 
 
 windows_zipfile 'D:/MozartV2_POC/' do
-  source "D:/mzzipcode/Deployments/#{zipname}"
+  source lazy "D:/mzzipcode/Deployments/#{zipname}"
   action :unzip
 end
 
