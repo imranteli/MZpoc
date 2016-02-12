@@ -41,7 +41,7 @@ end
 
 powershell_script 'unzip artifacts' do
   code <<-EOH
-  $zipname = get-content "D:\mzzipcode\Deployments\version.txt"
-  'C:\Program Files(x86)\7-zip\7z.exe' x "D:\mzzipcode\Deployments\$zipname" -o"D:\MozartV2_POC\"
+  $zipname = Get-Content "D:\mzzipcode\Deployments\version.txt"
+  'C:\Program Files(x86)\7-zip\7z.exe' x "D:\mzzipcode\Deployments\$zipname" -o'D:\MozartV2_POC\'
   EOH
 end
