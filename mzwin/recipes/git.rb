@@ -26,19 +26,16 @@ ruby_block 'extract zipname' do
   block do
     aFile = File.new(node['mzwin']['zippath'], "r")
     zipname = aFile.read.strip
-    node.default['mzwin']['zipname'] = zipname
-    node.override['mzwin']['zipname'] = zipname
     aFile.close
-    dep1 = Chef::Provider::Windows::zipfile.new('D:/MozartV2_POC/', run_context)
-    dep1.source "D:/mzzipcode/Deployments/#{node['mzwin']['zipname']}"
-    dep1.action :unzip 
+    file_r = run_context.resource_collection.find(:file => "/some_file")
+    file_r.content zipname
   end
   action :nothing
 end
 
 
-#windows_zipfile 'D:/MozartV2_POC/' do
-#  source "D:/mzzipcode/Deployments/#{node['mzwin']['zipname']}"
-#  action :unzip
-#end
+windows_zipfile 'D:/MozartV2_POC/' do
+  source "D:/mzzipcode/Deployments/#{zipname}"
+  action :unzip
+end
 
