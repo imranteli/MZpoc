@@ -22,20 +22,26 @@ git 'D:/mzzipcode/' do
 end
 
 
-ruby_block 'extract zipname' do
-  block do
-    aFile = File.new(node['mzwin']['zippath'], "r")
-    zipname = aFile.read.strip
-    aFile.close
-    file_r = run_context.resource_collection.find(:file => "/some_file")
-    file_r.content zipname
-  end
-  action :nothing
+#ruby_block 'extract zipname' do
+#  block do
+#    aFile = File.new(node['mzwin']['zippath'], "r")
+#    zipname = aFile.read.strip
+#    aFile.close
+#    file_r = run_context.resource_collection.find(:file => "/some_file")
+#    file_r.content zipname
+#  end
+#  action :nothing
+#end
+
+
+#windows_zipfile 'D:/MozartV2_POC/' do
+#  source lazy "D:/mzzipcode/Deployments/#{zipname}"
+#  action :unzip
+#end
+
+powershell_script 'unzip artifacts' do
+  code<<-EOH
+  $zipname = get-content "D:\mzzipcode\Deployments\version.txt"
+  'C:\Program Files(x86)\7-zip\7z.exe' x "D:\mzzipcode\Deployments\$zipname" -o"D:\MozartV2_POC\"
+  EOH
 end
-
-
-windows_zipfile 'D:/MozartV2_POC/' do
-  source lazy "D:/mzzipcode/Deployments/#{zipname}"
-  action :unzip
-end
-
