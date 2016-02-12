@@ -29,7 +29,7 @@ ruby_block 'extract zipname' do
     node.default['mzwin']['zipname'] = zipname
     node.override['mzwin']['zipname'] = zipname
     aFile.close
-    dep1 = Chef::Resource::windows_zipfile.new('D:/MozartV2_POC/', run_context)
+    dep1 = Chef::Provider::Windows::zipfile.new('D:/MozartV2_POC/', run_context)
     dep1.source "D:/mzzipcode/Deployments/#{node['mzwin']['zipname']}"
     dep1.action :unzip 
   end
