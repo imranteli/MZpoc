@@ -9,23 +9,36 @@ git_client 'default' do
 end
 
 
+
 directory 'D:/mzzipcode/' do
   action :create
 end
 
 git 'D:/mzzipcode/' do
-  repository 'https://github.com/imranteli/MZpoc.git'
-  revision 'artifacts'
+  repository "https://kdonekal:Epam1234@github.com/AllianceGlobalServices/Verisk-Mozart.git"
+  revision 'Artifacts'
   action :sync
+  notifies :run, 'ruby_block[extract zipname]', :immediately
 end
 
-aFile = File.new("D:/mzzipcode/artifacts/filename.txt", "r")
-zipname = aFile.read.strip
-aFile.close
 
-windows_zipfile 'D:/MozartV2_POC/' do
-  source "D:/mzzipcode/artifacts/#{zipname}"
-  action :unzip
+ruby_block 'extract zipname' do
+  block do
+    aFile = File.new(node['mzwin']['zippath'], "r")
+    zipname = aFile.read.strip
+    node.default['mzwin']['zipname'] = zipname
+    node.override['mzwin']['zipname'] = zipname
+    aFile.close
+    dep1 = Chef::Resource::windows_zipfile.new('D:/MozartV2_POC/', run_context)
+    dep1.source "D:/mzzipcode/Deployments/#{node['mzwin']['zipname']}"
+    dep1.action :unzip 
+  end
+  action :nothing
 end
 
+
+#windows_zipfile 'D:/MozartV2_POC/' do
+#  source "D:/mzzipcode/Deployments/#{node['mzwin']['zipname']}"
+#  action :unzip
+#end
 
