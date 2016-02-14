@@ -12,7 +12,6 @@
     "chef_handler": ">= 0.0.0",
     "iis": ">= 0.0.0",
     "git": ">= 0.0.0"
-    "zipfile": ">= 0.0.0"
   },
   "recommendations": {
   },
