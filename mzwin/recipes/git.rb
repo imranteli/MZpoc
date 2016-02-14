@@ -13,4 +13,7 @@ git 'D:/mzzipcode/' do
   action :sync
 end
 
-
+windows_zipfile 'D:/MozartV2_POC/' do
+  source "#{node['mzwin']['version']}"
+  action :unzip
+end
