@@ -1,5 +1,5 @@
 
-aFile = File.new("D:/mzzipcode/artifacts/version.txt", "r")
+aFile = File.new("D:/mzzipcode/Deployments/version.txt", "r")
 zipname = aFile.read.strip
 aFile.close
 
