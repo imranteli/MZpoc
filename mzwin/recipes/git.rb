@@ -22,16 +22,20 @@ git 'D:/mzzipcode/' do
 end
 
 
-#ruby_block 'extract zipname' do
-#  block do
-#    aFile = File.new(node['mzwin']['zippath'], "r")
-#    zipname = aFile.read.strip
-#    aFile.close
+ruby_block 'extract zipname' do
+  block do
+    aFile= File.new(node['mzwin']['zippath'], "r")
+    zipname= aFile.read.strip
+    aFile.close
+    source= File.join("D:", "mzzipcode", "Deployments", zipname)
+    dest= File.join("D:", "MozartV2_POC")
+    unzipping=Chef::Resource::Zipfile.new(source, run_context)
+    unzipping.into dest
 #    file_r = run_context.resource_collection.find(:file => "/some_file")
 #    file_r.content zipname
-#  end
-#  action :nothing
-#end
+  end
+  action :nothing
+end
 
 
 #windows_zipfile 'D:/MozartV2_POC/' do
@@ -39,9 +43,9 @@ end
 #  action :unzip
 #end
 
-powershell_script 'unzip artifacts' do
-  code <<-EOH
-  $zipname = Get-Content "D:\mzzipcode\Deployments\version.txt"
-  'C:\Program Files(x86)\7-zip\7z.exe' x "D:\mzzipcode\Deployments\$zipname" -o'D:\MozartV2_POC\'
-  EOH
-end
+#powershell_script 'unzip artifacts' do
+#  code <<-EOH
+#  $zipname = Get-Content "D:\mzzipcode\Deployments\version.txt"
+#  'C:\Program Files(x86)\7-zip\7z.exe' x "D:\mzzipcode\Deployments\$zipname" -o'D:\MozartV2_POC\'
+#  EOH
+#end
