@@ -14,6 +14,6 @@ git node['mzwin']['tmpdir'] do
 end
 
 windows_zipfile node['mzwin']['appdir'] do
-  source "#{node['mzwin']['artifacts']['version']}"
+  source "D:/mzzipcode/Deployments/#{node['mzwin']['artifacts']['version']}"
   action :unzip
 end
