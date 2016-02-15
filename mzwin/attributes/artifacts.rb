@@ -1,1 +1,1 @@
-default['mzwin']['artifacts']['version'] = '31_2016-02-12_15-39-02.zip'
+default['mzwin']['artifacts']['version'] = '29_2016-02-10_16-53-23.zip'
