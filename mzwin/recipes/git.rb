@@ -14,6 +14,6 @@ git 'D:/mzzipcode/' do
 end
 
 windows_zipfile 'D:/MozartV2_POC/' do
-  source "#{node['mzwin']['version']}"
+  source "#{node['mzwin']['artifacts']['version']}"
   action :unzip
 end
