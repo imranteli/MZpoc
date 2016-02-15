@@ -8,6 +8,6 @@
 #  action [:stop, :delete]
 #end
 
-iis_site 'MozartV2_POC' do
+iis_site node['mzwin']['sitename'] do
   action :restart
 end
