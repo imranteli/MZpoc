@@ -8,7 +8,7 @@ directory node['mzwin']['tmpdir'] do
 end
 
 git node['mzwin']['tmpdir'] do
-  repository "https://kdonekal:Epam1234@github.com/AllianceGlobalServices/Verisk-Mozart.git"
+  repository node['mzwin']['giturl']
   revision 'Artifacts'
   action :sync
 end
