@@ -33,7 +33,7 @@ batch 'Delete existing code base' do
   code <<-EOH
   D:
   cd #{node['mzwin']['appdir']}
-  del *.* -f
+  del *.* /F /Q
   EOH
 end
 
