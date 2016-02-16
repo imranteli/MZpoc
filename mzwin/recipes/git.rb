@@ -15,5 +15,6 @@ end
 
 windows_zipfile node['mzwin']['appdir'] do
   source "D:/mzzipcode/Deployments/#{node['mzwin']['artifacts']['version']}"
+  overwrite true 
   action :unzip
 end
